@@ -25,6 +25,9 @@ public class Response<T> {
     private int status;
     private String message;
 
+    /**
+     * 生产环境中为了避免泄漏，关闭用户调试的错误信息
+     */
     private static boolean closeExStack;
 
     public static void setCloseExStack(boolean closeExStack) {

@@ -26,9 +26,8 @@ public class HttpController {
 
     /**
      * 请求服务时拦截器会注入认证信息
+     *
      * @see RestTemplateAuthInterceptor
-     * @param request
-     * @return
      */
     @GetMapping
     public Response<?> restTemplate(HttpServletRequest request) {

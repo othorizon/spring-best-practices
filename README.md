@@ -56,3 +56,14 @@
   
 [common/src/main/java/top/rizon/springbestpractice/common/utils/http/SimpleRestTemplateUtils.java](common/src/main/java/top/rizon/springbestpractice/common/utils/http/SimpleRestTemplateUtils.java)    
 RestTemplate拦截器：RestTemplateAuthConfig、BaseAuthHeaderHttpRequestInterceptor
+
+#### 封装的一些简单工具类
+
+[common/src/main/java/top/rizon/springbestpractice/common/utils/](common/src/main/java/top/rizon/springbestpractice/common/utils/)
+
+#### 第三方工具类相关
+
+MapStruct java对象映射工具  
+[web/src/main/java/top/rizon/springbestpractice/web/model/WebObjMapper.java](web/src/main/java/top/rizon/springbestpractice/web/model/WebObjMapper.java)
+ps. 某些场景下用于deepClone也是一个不错的选择    
+

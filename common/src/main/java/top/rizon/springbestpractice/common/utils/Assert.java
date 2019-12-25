@@ -6,8 +6,12 @@ import top.rizon.springbestpractice.common.exception.AssertFailExceptionBase;
 import top.rizon.springbestpractice.common.exception.BaseServerException;
 
 /**
+ * 用于一些常见的断言
+ * required* 相关的方法则可以在一行代码中完成验证和取值，更为简洁
+ *
  * @author Rizon
  * @date 2018/9/11
+ * @see com.google.common.base.Preconditions
  */
 public class Assert {
     public static void isTrue(boolean test, String msg, Object... msgArgs) {
