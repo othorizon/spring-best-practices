@@ -1,4 +1,4 @@
-package top.rizon.springbestpractice.web.config;
+package top.rizon.springbestpractice.web.config.auth;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;

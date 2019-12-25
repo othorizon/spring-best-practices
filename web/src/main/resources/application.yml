@@ -1,3 +1,8 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
 # 健康接口的版本信息
 project-build-version-info:
   version: @project.version@

@@ -23,4 +23,8 @@ public class SimpleAuthUser implements AuthUser {
         return name;
     }
 
+    @Override
+    public String getToken() {
+        return token;
+    }
 }

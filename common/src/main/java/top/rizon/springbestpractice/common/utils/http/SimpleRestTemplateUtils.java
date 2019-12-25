@@ -1,4 +1,4 @@
-package top.rizon.springbestpractice.common.utils;
+package top.rizon.springbestpractice.common.utils.http;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -19,6 +19,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import top.rizon.springbestpractice.common.exception.BaseServerException;
 import top.rizon.springbestpractice.common.handler.RestClientErrorExceptionHandler;
 import top.rizon.springbestpractice.common.model.response.Response;
+import top.rizon.springbestpractice.common.utils.ObjUtil;
 
 import java.net.URI;
 import java.util.Map;
