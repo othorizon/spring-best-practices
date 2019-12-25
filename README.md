@@ -13,7 +13,7 @@
 - 枚举的优雅使用： 1、如何把枚举作为接口的交互参数：@JsonCreator、@JsonValue ,要注意fastjson和spring采用的jackson 对注解的支持 2、valueOfByXX
 - 缓存的优雅使用： @Cacheable 、CaffeineCacheManager、请求级别的缓存RequestScopedCacheManager，注意防止副作用操作污染缓存数据
 - 配置文件配置时间属性：java.time.Duration
-- 正确的报错方式，message的国际化： <https://www.jianshu.com/p/4d5f16f6ab82>
+- 正确的报错方式，message的国际化： [参考](https://www.jianshu.com/p/4d5f16f6ab82)
 - 日志的优雅配置：log4j与logback的基础、使用MDC增加tractId跟踪日志
 
 第三方工具的使用
