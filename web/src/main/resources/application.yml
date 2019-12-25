@@ -1,0 +1,24 @@
+# 健康接口的版本信息
+project-build-version-info:
+  version: @project.version@
+  buildTimestamp: @timestamp@
+  scmVersion: @buildNumber@
+
+spring:
+  # Demo DataSource Config
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test
+    username: root
+    password: test
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+logging:
+  config: classpath:log4j2.xml
+
+auth:
+  exclude-path:
+    - /error
+    - /health/**

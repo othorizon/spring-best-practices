@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--https://howtodoinjava.com/log4j2/log4j-2-xml-configuration-example/ -->
+
+<!--status：用于设置log4j2本身打印日志的级别，可以不设置，当设置成trace时，可以看到log4j2内部各种详细输出-->
+<!--monitorInterval用于指定log4j自动重新配置的监测间隔时间，单位是m，最小是5m-->
+<Configuration status="info" monitorInterval="60">
+    <!--变量配置-->
+    <Properties>
+        <property name="LOG_DIR">/data/log</property>
+        <!-- java -DLOG_DIR=log -->
+        <property name="ACTUAL_LOG_DIR">${sys:LOG_DIR}</property>
+        <!--日志格式化输出：%date表示日期，%thread表示线程名，%-5level，%msg：日志消息，%n换行符-->
+        <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %X{TRACE_KEY} %c %M - %msg%n"/>
+    </Properties>
+
+    <Appenders>
+        <!--控制台日志打印-->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout charset="UTF-8" pattern="${LOG_PATTERN}"/>
+        </Console>
+
+        <!--按天生成一个日志，打印info级别的日志-->
+        <RollingFile name="INFO_FILE" fileName="${ACTUAL_LOG_DIR}/info.log"
+                     filePattern="${ACTUAL_LOG_DIR}/info.log.%d{yyyy-MM-dd}">
+            <PatternLayout charset="UTF-8" pattern="${LOG_PATTERN}"/>
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            <!--滚动日志的策略-->
+            <Policies>
+                <!--interval属性用来指定多久滚动一次，以下设置一天-->
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+            <!--设置日志保存7天-->
+            <DefaultRolloverStrategy>
+                <Delete basePath="${ACTUAL_LOG_DIR}" maxDepth="1">
+                    <IfFileName glob="info.log.*"/>
+                    <IfLastModified age="7d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+
+        <!--按天生成一个日志，打印error级别的日志-->
+        <RollingFile name="ERROR_FILE" fileName="${ACTUAL_LOG_DIR}/error.err"
+                     filePattern="${ACTUAL_LOG_DIR}/error.err.%d{yyyy-MM-dd}">
+            <PatternLayout charset="UTF-8" pattern="${LOG_PATTERN}"/>
+            <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            <!--滚动日志的策略-->
+            <Policies>
+                <!--interval属性用来指定多久滚动一次，以下设置一天-->
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+            <!--设置日志保存7天-->
+            <DefaultRolloverStrategy>
+                <Delete basePath="${ACTUAL_LOG_DIR}" maxDepth="1">
+                    <IfFileName glob="error.err.*"/>
+                    <IfLastModified age="7d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+
+    </Appenders>
+
+    <Loggers>
+        <!--配置多个logger可以指定不同类或包下打印的日志输出到不同的文件里，name属性设置指定的类名或包名，additivity设置为false将只作用于当前AppenderRef-->
+        <logger name="top.rizon.springbestpractice.auth.AuthenticationInterceptor" level="info" additivity="false">
+            <appender-ref ref="Console"/>
+        </logger>
+
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="INFO_FILE"/>
+            <AppenderRef ref="ERROR_FILE"/>
+        </Root>
+    </Loggers>
+</Configuration>

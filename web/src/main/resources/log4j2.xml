@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--https://howtodoinjava.com/log4j2/log4j-2-xml-configuration-example/ -->
+
+<!--status：用于设置log4j2本身打印日志的级别，可以不设置，当设置成trace时，可以看到log4j2内部各种详细输出-->
+<!--monitorInterval用于指定log4j自动重新配置的监测间隔时间，单位是m，最小是5m-->
+<Configuration status="info" monitorInterval="60">
+    <!--变量配置-->
+    <Properties>
+        <!--日志格式化输出：%date表示日期，%thread表示线程名，%-5level，%msg：日志消息，%n换行符-->
+        <property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %X{TRACE_KEY} %c %M - %msg%n"/>
+    </Properties>
+
+    <Appenders>
+        <!--控制台日志打印-->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout charset="UTF-8" pattern="${LOG_PATTERN}"/>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
