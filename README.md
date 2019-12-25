@@ -36,3 +36,23 @@
 - 项目必备的工具包：apache-common系列、gson 等
 - 借助@RestControllerAdvice实现全局统一的response返回，方法直接通过抛异常来返回
 - 更好的实现项目的初始化相关操作
+
+## 代码结构
+### 导航
+
+#### 缓存的几种写法  
+
+[web/src/main/java/top/rizon/springbestpractice/web/controller/CacheExampleController.java](web/src/main/java/top/rizon/springbestpractice/web/controller/CacheExampleController.java)    
+
+#### 登陆认证的简单实现方式
+  
+[web/src/main/java/top/rizon/springbestpractice/web/config/auth/AuthWebConfig.java](web/src/main/java/top/rizon/springbestpractice/web/config/auth/AuthWebConfig.java)  
+
+#### 全局异常拦截处理
+  
+[common/src/main/java/top/rizon/springbestpractice/common/handler/ExceptionHandlers.java](common/src/main/java/top/rizon/springbestpractice/common/handler/ExceptionHandlers.java)  
+
+#### http请求工具RestTemplate的简单封装使用
+  
+[common/src/main/java/top/rizon/springbestpractice/common/utils/http/SimpleRestTemplateUtils.java](common/src/main/java/top/rizon/springbestpractice/common/utils/http/SimpleRestTemplateUtils.java)    
+RestTemplate拦截器：RestTemplateAuthConfig、BaseAuthHeaderHttpRequestInterceptor
