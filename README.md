@@ -6,6 +6,8 @@
 
 **持续更新，欢迎PR**
 
+Spring Boot版本 ：2.1.7 , 兼容的Spring Cloud版本为 Greenwich ,版本对照参考[官网Overview](https://spring.io/projects/spring-cloud#overview)
+
 ## 概要
 
 - 如何配置拦截器：interceptor、filter、@RestControllerAdvice
@@ -16,14 +18,15 @@
 - 配置文件配置时间属性：java.time.Duration
 - 正确的报错方式，message的国际化： [参考](https://www.jianshu.com/p/4d5f16f6ab82)
 - 日志的优雅配置：log4j与logback的基础、使用MDC增加tractId跟踪日志
+- AOP的应用：自定义注解、方法拦截
 
 第三方工具的使用
 
 - RestTemplate的优雅使用：工具类的封装、header的注入
 - 借助Mybatis-Plus实现零SQL开发
 - 借助MapStruct实现po、bo、vo等对象之间的转换
-- 健康接口，版本检查： buildnumber-maven-plugin
-- 如何深度复制对象：json复制、mapStruct
+- 健康接口，项目部署版本检查： buildnumber-maven-plugin
+- 如何深度复制对象：json复制、mapStruct、BeanUtils
 - apache-common 系列、hutool等基本工具类
 - 自定义的时间格式化工具类、jackson的封装工具
 
@@ -38,8 +41,21 @@
 - 借助@RestControllerAdvice实现全局统一的response返回，方法直接通过抛异常来返回
 - 更好的实现项目的初始化相关操作
 
-## 代码结构
-### 导航
+### 代码之道
+
+- 如何干掉if-else
+
+## 导航
+
+#### 健康接口
+
+[web/src/main/java/top/rizon/springbestpractice/web/controller/ServerHealthController.java](web/src/main/java/top/rizon/springbestpractice/web/controller/ServerHealthController.java)  
+
+健康接口是项目必备接口  
+基本的ping-pong：接口作为最基本的服务存活检测  
+服务器信息接口：可以打印服务常用信息的接口，比如服务器时间等  
+git版本信息的接口：接口打印了git版本号和build时间，在开发联调期间是非常重要的一个运维参考  
+_ps. 要从auth认证拦截中排除_
 
 #### 缓存的几种写法  
 
