@@ -114,3 +114,9 @@ ps. 某些场景下用于deepClone也是一个不错的选择
 ## Online IDE
 
 [![在 Gitpod 中打开](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/othorizon/spring-best-practices)
+
+```bash
+# buildnumber-maven-plugin配置所致，在clean之后运行测试用例会由于尚未替换的配置导致配置文件读取失败
+mvn clean package -DskipTests=true
+java -jar web/target/web-0.0.1-SNAPSHOT.jar
+```
