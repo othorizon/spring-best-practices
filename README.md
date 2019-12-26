@@ -1,10 +1,10 @@
 # spring 最佳实践
 
-总结了本人3年Java开发中的一些开发经验和工具类以及Spring框架的应用  
+总结了本人多年Java开发中的一些开发经验以及工具类和Spring框架的应用  
 采用了Spring项目的模式来最简单直观的呈现，直接拿来作为初始化项目也是不错的选择  
 该项目还在打磨中，仍有很多需要完善和优化的地方  
 
-**持续更新，欢迎PR**
+**项目持续更新中**
 
 Spring Boot版本 ：2.1.7 , 兼容的Spring Cloud版本为 Greenwich ,版本对照参考[官网Overview](https://spring.io/projects/spring-cloud#overview)
 
@@ -17,6 +17,7 @@ Spring Boot版本 ：2.1.7 , 兼容的Spring Cloud版本为 Greenwich ,版本对
 - 缓存的优雅使用： @Cacheable 、CaffeineCacheManager、请求级别的缓存RequestScopedCacheManager，注意防止副作用操作污染缓存数据
 - 配置文件配置时间属性：java.time.Duration
 - 正确的报错方式，message的国际化： [参考](https://www.jianshu.com/p/4d5f16f6ab82)
+- 接口参数校验：@Validated、javax.validation.constraints
 - 日志的优雅配置：log4j与logback的基础、使用MDC增加tractId跟踪日志
 - AOP的应用：自定义注解、方法拦截
 
@@ -57,6 +58,16 @@ Spring Boot版本 ：2.1.7 , 兼容的Spring Cloud版本为 Greenwich ,版本对
 git版本信息的接口：接口打印了git版本号和build时间，在开发联调期间是非常重要的一个运维参考  
 _ps. 要从auth认证拦截中排除_
 
+#### 接口参数校验
+
+[web/src/main/java/top/rizon/springbestpractice/web/controller/UserController.java](web/src/main/java/top/rizon/springbestpractice/web/controller/UserController.java)  
+错误提示配置：[web/src/main/resources/ValidationMessages.properties](web/src/main/resources/ValidationMessages.properties)  
+
+示例方法：`top.rizon.springbestpractice.web.controller.UserController.list`
+
+通过注解实现参数校验，
+错误提示信息可以使用配置文件实现国际化处理
+
 #### 缓存的几种写法  
 
 [web/src/main/java/top/rizon/springbestpractice/web/controller/CacheExampleController.java](web/src/main/java/top/rizon/springbestpractice/web/controller/CacheExampleController.java)    
@@ -76,11 +87,26 @@ RestTemplate拦截器：RestTemplateAuthConfig、BaseAuthHeaderHttpRequestInterc
 
 #### 封装的一些简单工具类
 
-[common/src/main/java/top/rizon/springbestpractice/common/utils/](common/src/main/java/top/rizon/springbestpractice/common/utils/)
+[common/src/main/java/top/rizon/springbestpractice/common/utils/](common/src/main/java/top/rizon/springbestpractice/common/utils/)  
 
 #### 第三方工具类相关
 
 MapStruct java对象映射工具  
-[web/src/main/java/top/rizon/springbestpractice/web/model/WebObjMapper.java](web/src/main/java/top/rizon/springbestpractice/web/model/WebObjMapper.java)
+[web/src/main/java/top/rizon/springbestpractice/web/model/WebObjMapper.java](web/src/main/java/top/rizon/springbestpractice/web/model/WebObjMapper.java)  
 ps. 某些场景下用于deepClone也是一个不错的选择    
 
+#### AOP的应用案例
+
+[common/src/main/java/top/rizon/springbestpractice/common/aspect/](common/src/main/java/top/rizon/springbestpractice/common/aspect/)  
+
+#####  分页页码自动修复
+
+[web/src/main/java/top/rizon/springbestpractice/web/controller/UserController.java](web/src/main/java/top/rizon/springbestpractice/web/controller/UserController.java)  
+`top.rizon.springbestpractice.web.controller.UserController.list`  
+当页码大于数据真实页码时会纠正为最后一页的数据，这可以解决前端分页展示删除最后一页的最后一条数据时刷新后为无数据的空白页的问题  
+
+##### 打印方法执行时间
+
+[web/src/main/java/top/rizon/springbestpractice/web/controller/DemoController.java](web/src/main/java/top/rizon/springbestpractice/web/controller/DemoController.java)
+`top.rizon.springbestpractice.web.service.AopExampleService.sleepMethod`  
+打印方法执行时间，这在优化代码，排查耗时过高的方法时有一定的帮助

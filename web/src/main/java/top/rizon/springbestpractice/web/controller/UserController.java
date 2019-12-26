@@ -7,9 +7,11 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import top.rizon.springbestpractice.common.aspect.AutoRepairPageAspect;
 import top.rizon.springbestpractice.common.model.request.PageParam;
 import top.rizon.springbestpractice.common.model.response.PageResponse;
 import top.rizon.springbestpractice.common.model.response.Response;
@@ -34,8 +36,16 @@ public class UserController {
     private final UserHelper userHelper;
     private final WebObjMapper webObjMapper;
 
+    /**
+     * <p>
+     * 分页页码自动纠正AOP,
+     * 当页码大于数据真实页码时会纠正为最后一页的数据，这可以解决前端分页展示删除最后一页的最后一条数据时刷新后为无数据的空白页的问题
+     * </p>
+     *
+     * @see AutoRepairPageAspect
+     */
     @GetMapping("list")
-    public Response<List<UserVo>> list(UserQueryParam param) {
+    public Response<List<UserVo>> list(@Validated UserQueryParam param) {
         log.info("request list user,param:{}", param);
         PageParam pageParam = param.getPageParam();
         LambdaQueryWrapper<User> queryWrapper = Wrappers.<User>lambdaQuery()

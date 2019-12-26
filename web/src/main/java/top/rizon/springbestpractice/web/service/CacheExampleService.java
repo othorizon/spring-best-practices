@@ -16,6 +16,8 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * 缓存使用应当注意只对缓存数据做读操作，避免side-effect，防止污染缓存数据
+ *
  * @author Rizon
  * @date 2019/12/25
  */
@@ -34,6 +36,10 @@ public class CacheExampleService {
                 .build();
     }
 
+    /**
+     * 与其他的基于Spring Aop代理的注解（如 @Transactional）相同，
+     * 必须应用在public方法，而且不能在同类中自调用,否则代理无法生效
+     */
     @Cacheable(value = "byAnnotation", cacheManager = "requestScopedCacheManager")
     public List<CacheExampleVo> requestScopedByAnnotation() {
         log.info("init requestScoped cache data");

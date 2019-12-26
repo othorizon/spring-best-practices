@@ -27,3 +27,4 @@ auth:
   exclude-path:
     - /error
     - /health/**
+    - /demo/**
