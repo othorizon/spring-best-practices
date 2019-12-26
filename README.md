@@ -1,10 +1,8 @@
 # spring 最佳实践
 
 总结了本人多年Java开发中的一些开发经验以及工具类和Spring框架的应用  
-采用了Spring项目的模式来最简单直观的呈现，直接拿来作为初始化项目也是不错的选择  
-该项目还在打磨中，仍有很多需要完善和优化的地方  
-
-**项目持续更新中**
+采用了项目Demo的方式把零散的内容联系在一起去展示其用法，可以直接拿来作为种子项目，用于快速构建中小型的spring-boot项目  
+**项目持续更新中，将会逐步扩充完善**
 
 Spring Boot版本 ：2.1.7 , 兼容的Spring Cloud版本为 Greenwich ,版本对照参考[官网Overview](https://spring.io/projects/spring-cloud#overview)
 
