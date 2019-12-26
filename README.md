@@ -110,3 +110,7 @@ ps. 某些场景下用于deepClone也是一个不错的选择
 [web/src/main/java/top/rizon/springbestpractice/web/controller/DemoController.java](web/src/main/java/top/rizon/springbestpractice/web/controller/DemoController.java)
 `top.rizon.springbestpractice.web.service.AopExampleService.sleepMethod`  
 打印方法执行时间，这在优化代码，排查耗时过高的方法时有一定的帮助
+
+## Online IDE
+
+[![在 Gitpod 中打开](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/othorizon/spring-best-practices)
