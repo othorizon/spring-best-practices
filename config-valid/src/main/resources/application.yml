@@ -1,0 +1,8 @@
+authentication:
+  cas-config:
+    cas-server-url: https://cas.example.org:8443/cas
+    cas-server-login-url: ${authentication.cas-config.cas-server-url}/login
+    cas-server-logout-url: ${authentication.cas-config.cas-server-url}/logout?service=${authentication.cas-config.app-server-url}
+    app-server-url: http://localhost:8080
+    app-login-url: /login
+    app-logout-url: /api/logout

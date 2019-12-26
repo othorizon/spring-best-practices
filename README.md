@@ -84,3 +84,11 @@ MapStruct java对象映射工具
 [web/src/main/java/top/rizon/springbestpractice/web/model/WebObjMapper.java](web/src/main/java/top/rizon/springbestpractice/web/model/WebObjMapper.java)
 ps. 某些场景下用于deepClone也是一个不错的选择    
 
+#### Spring Boot 优雅配置校验
+
+适用于Starter和启动配置的编写时使用
+通过Bean-Valid 来校验启动的Bean,并且提供相关注释,优雅使用配置
+
+[config-valid/src/main/java/cn/boommanpro/config/valid/config/CasConfigProperties.java](config-valid/src/main/java/cn/boommanpro/config/valid/config/CasConfigProperties.java)
+
+ps. 优雅配置校验及提示

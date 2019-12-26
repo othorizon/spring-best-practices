@@ -1,0 +1,48 @@
+{
+  "groups": [
+    {
+      "name": "authentication.cas-config",
+      "type": "cn.boommanpro.config.valid.config.CasConfigProperties",
+      "sourceType": "cn.boommanpro.config.valid.config.CasConfigProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "authentication.cas-config.app-login-url",
+      "type": "java.lang.String",
+      "description": "app 登录地址 e.g \/login\"",
+      "sourceType": "cn.boommanpro.config.valid.config.CasConfigProperties"
+    },
+    {
+      "name": "authentication.cas-config.app-logout-url",
+      "type": "java.lang.String",
+      "description": "app登出地址 e.g \/api\/logout",
+      "sourceType": "cn.boommanpro.config.valid.config.CasConfigProperties"
+    },
+    {
+      "name": "authentication.cas-config.app-server-url",
+      "type": "java.lang.String",
+      "description": "app地址 e.g http:\/\/localhost:8080",
+      "sourceType": "cn.boommanpro.config.valid.config.CasConfigProperties"
+    },
+    {
+      "name": "authentication.cas-config.cas-server-login-url",
+      "type": "java.lang.String",
+      "description": "CAS服务登录地址 https:\/\/cas.example.org:8443\/cas\/login",
+      "sourceType": "cn.boommanpro.config.valid.config.CasConfigProperties"
+    },
+    {
+      "name": "authentication.cas-config.cas-server-logout-url",
+      "type": "java.lang.String",
+      "description": "CAS服务登出地址 e.g https:\/\/cas.example.org:8443\/cas\/logout?service=${authentication.cas-config.app-server-url}",
+      "sourceType": "cn.boommanpro.config.valid.config.CasConfigProperties"
+    },
+    {
+      "name": "authentication.cas-config.cas-server-url",
+      "type": "java.lang.String",
+      "description": "CAS服务登录地址 e.g https:\/\/cas.example.org:8443\/cas",
+      "sourceType": "cn.boommanpro.config.valid.config.CasConfigProperties"
+    }
+  ],
+  "hints": []
+}

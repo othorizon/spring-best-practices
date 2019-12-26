@@ -23,6 +23,7 @@
         <module>web</module>
         <module>auth</module>
         <module>dao</module>
+        <module>config-valid</module>
     </modules>
 
     <properties>
