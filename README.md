@@ -17,12 +17,13 @@ Spring Boot版本 ：2.1.7 , 兼容的Spring Cloud版本为 Greenwich ,版本对
 - 缓存的优雅使用： @Cacheable 、CaffeineCacheManager、请求级别的缓存RequestScopedCacheManager，注意防止副作用操作污染缓存数据
 - 配置文件配置时间属性：java.time.Duration
 - 正确的报错方式，message的国际化： [参考](https://www.jianshu.com/p/4d5f16f6ab82)
-- 接口参数校验：@Validated、javax.validation.constraints
+- 接口参数校验：@Validated、javax.validation.constraints、自定义参数校验注解
 - 日志的优雅配置：log4j与logback的基础、使用MDC增加tractId跟踪日志
 - AOP的应用：自定义注解、方法拦截
 
 第三方工具的使用
 
+- json的处理：gson、fastjson、jackson，json-path
 - RestTemplate的优雅使用：工具类的封装、header的注入
 - 借助Mybatis-Plus实现零SQL开发
 - 借助MapStruct实现po、bo、vo等对象之间的转换
@@ -34,7 +35,7 @@ Spring Boot版本 ：2.1.7 , 兼容的Spring Cloud版本为 Greenwich ,版本对
 运维
 
 - 数据库版本维护 flyway
-- Jenkins的常用配置方式
+- CI/CD相关: Jenkins的常用配置方式、docker、kubernetes
 
 ### 在项目中的实践
 
