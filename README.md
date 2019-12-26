@@ -112,12 +112,32 @@ ps. 某些场景下用于deepClone也是一个不错的选择
 `top.rizon.springbestpractice.web.service.AopExampleService.sleepMethod`  
 打印方法执行时间，这在优化代码，排查耗时过高的方法时有一定的帮助
 
-## Online IDE
+#### 代码之道
 
-[![在 Gitpod 中打开](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/othorizon/spring-best-practices)
+##### 策略模式
+
+[web/src/main/java/top/rizon/springbestpractice/web/controller/DemoController.java](web/src/main/java/top/rizon/springbestpractice/web/controller/DemoController.java)  
+`top.rizon.springbestpractice.web.controller.DemoController.formatDate`  
+如果你的if-else过于负责那么应当考虑抽象业务了，简单的业务可以直接用枚举写抽象方法的实现，复杂的业务则可以写接口类去实现  
+
+#### 使用枚举作为请求参数
+
+[web/src/main/java/top/rizon/springbestpractice/web/controller/DemoController.java](web/src/main/java/top/rizon/springbestpractice/web/controller/DemoController.java)  
+`top.rizon.springbestpractice.web.controller.DemoController.formatDate`  
+jackson的`@JsonCreator`可以指定json反序列化时的构造函数，`@JsonValue`则可以指定对象序列化时的取值属性
+
+## 使用
+
+[API Doc - Postman](https://documenter.getpostman.com/view/494976/SWLZgAn8)    
+
+编译
 
 ```bash
 # buildnumber-maven-plugin配置所致，在clean之后运行测试用例会由于尚未替换的配置导致配置文件读取失败
 mvn clean package -DskipTests=true
 java -jar web/target/web-0.0.1-SNAPSHOT.jar
 ```
+
+### Online IDE
+
+[![在 Gitpod 中打开](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/othorizon/spring-best-practices)

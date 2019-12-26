@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import top.rizon.springbestpractice.common.utils.DateTimeUtils;
 
 import java.util.Date;
 
@@ -61,7 +62,7 @@ public class ServerHealthController {
     public static class ServerHealthResponse {
         private int status = 200;
         private String message = "success";
-        @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+        @DateTimeFormat(pattern = DateTimeUtils.YYYYMMDDHHMMSS)
         private Date serverTime = new Date();
     }
 }
