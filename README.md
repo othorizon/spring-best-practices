@@ -90,7 +90,7 @@ RestTemplate拦截器：RestTemplateAuthConfig、BaseAuthHeaderHttpRequestInterc
 
 ##### sql注入的应用
 
-[dao/utils/dynamictblname/](dao/utils/dynamictblname/)  
+[dao/src/main/java/top/rizon/springbestpractice/dao/utils/dynamictblname/](dao/src/main/java/top/rizon/springbestpractice/dao/utils/dynamictblname/)  
 `top.rizon.springbestpractice.web.controller.SqlExampleController.queryDateTable`  
 动态表名,一般可用于按日期等方式做分表的业务场景  
 顺便演示了PageHelper的分页工具的使用  
