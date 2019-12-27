@@ -21,5 +21,9 @@
         <Root level="info">
             <AppenderRef ref="Console"/>
         </Root>
+        <!--mybatis log-->
+        <logger name="top.rizon.springbestpractice.dao" level="debug" additivity="false">
+            <AppenderRef ref="Console"/>
+        </logger>
     </Loggers>
 </Configuration>

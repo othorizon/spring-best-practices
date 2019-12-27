@@ -11,6 +11,11 @@
     <artifactId>dao</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>top.rizon.springbestpractice</groupId>
+            <artifactId>common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

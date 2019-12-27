@@ -6,6 +6,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import top.rizon.springbestpractice.dao.utils.dynamictblname.DynamicTableNameUtils;
 
 /**
  * @author rizon
@@ -20,7 +21,9 @@ public class MybatisPlusConfig {
 
     @Bean
     public PaginationInterceptor paginationInterceptor() {
-        return new PaginationInterceptor();
+        PaginationInterceptor interceptor = new PaginationInterceptor();
+        DynamicTableNameUtils.registerDynamicTableName(interceptor);
+        return interceptor;
     }
 
     /**

@@ -84,9 +84,16 @@ _ps. 要从auth认证拦截中排除_
 [common/src/main/java/top/rizon/springbestpractice/common/utils/http/SimpleRestTemplateUtils.java](common/src/main/java/top/rizon/springbestpractice/common/utils/http/SimpleRestTemplateUtils.java)    
 RestTemplate拦截器：RestTemplateAuthConfig、BaseAuthHeaderHttpRequestInterceptor
 
-#### 封装的一些简单工具类
+#### 封装的工具类
 
 [common/src/main/java/top/rizon/springbestpractice/common/utils/](common/src/main/java/top/rizon/springbestpractice/common/utils/)  
+
+##### sql注入的应用
+
+[dao/utils/dynamictblname/](dao/utils/dynamictblname/)  
+`top.rizon.springbestpractice.web.controller.SqlExampleController.queryDateTable`  
+动态表名,一般可用于按日期等方式做分表的业务场景  
+顺便演示了PageHelper的分页工具的使用  
 
 #### 第三方工具类相关
 
