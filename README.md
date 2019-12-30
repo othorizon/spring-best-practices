@@ -98,8 +98,10 @@ RestTemplate拦截器：RestTemplateAuthConfig、BaseAuthHeaderHttpRequestInterc
 
 #### java8 stream 的技巧
 
-[common/src/main/java/top/rizon/springbestpractice/common/utils/StreamUtil.java](common/src/main/java/top/rizon/springbestpractice/common/utils/StreamUtil.java)  
-demo: [common/src/test/java/top/rizon/springbestpractice/common/utils/StreamUtilTest.java](common/src/test/java/top/rizon/springbestpractice/common/utils/StreamUtilTest.java)  
+[common/src/test/java/top/rizon/springbestpractice/common/utils/StreamUtilTest.java](common/src/test/java/top/rizon/springbestpractice/common/utils/StreamUtilTest.java)  
+
+stream本质上也只是一个语法糖，提供了简单的并发操作parallelStream  
+collect、groupBy、reduce、parallel等操作demo
 
 #### 第三方工具类相关
 
