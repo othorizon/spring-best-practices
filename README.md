@@ -101,7 +101,7 @@ RestTemplate拦截器：RestTemplateAuthConfig、BaseAuthHeaderHttpRequestInterc
 [common/src/test/java/top/rizon/springbestpractice/common/utils/StreamUtilTest.java](common/src/test/java/top/rizon/springbestpractice/common/utils/StreamUtilTest.java)  
 
 stream本质上也只是一个语法糖，提供了简单的并发操作parallelStream  
-collect、groupBy、reduce、parallel等操作demo
+filter、collect、groupBy、reduce、parallel等基本和进阶操作demo
 
 #### 第三方工具类相关
 
