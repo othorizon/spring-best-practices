@@ -119,11 +119,11 @@ ps. 某些场景下用于deepClone也是一个不错的选择
 
 #### 代码之道
 
-##### 策略模式
+##### 策略模式 干掉if-else
 
 [web/src/main/java/top/rizon/springbestpractice/web/controller/DemoController.java](web/src/main/java/top/rizon/springbestpractice/web/controller/DemoController.java)  
 `top.rizon.springbestpractice.web.controller.DemoController.formatDate`  
-如果你的if-else过于负责那么应当考虑抽象业务了，简单的业务可以直接用枚举写抽象方法的实现，复杂的业务则可以写接口类去实现  
+如果你的if-else过于复杂那么应当考虑抽象业务了，简单的业务可以直接用枚举写抽象方法的实现，复杂的业务则可以写接口类去实现  
 
 #### 使用枚举作为请求参数
 
