@@ -18,6 +18,7 @@ Spring Boot版本 ：2.1.7 , 兼容的Spring Cloud版本为 Greenwich ,版本对
 - 接口参数校验：@Validated、javax.validation.constraints、自定义参数校验注解
 - 日志的优雅配置：log4j与logback的基础、使用MDC增加tractId跟踪日志
 - AOP的应用：自定义注解、方法拦截
+- java8 stream 的使用技巧
 
 第三方工具的使用
 
@@ -94,6 +95,11 @@ RestTemplate拦截器：RestTemplateAuthConfig、BaseAuthHeaderHttpRequestInterc
 `top.rizon.springbestpractice.web.controller.SqlExampleController.queryDateTable`  
 动态表名,一般可用于按日期等方式做分表的业务场景  
 顺便演示了PageHelper的分页工具的使用  
+
+#### java8 stream 的技巧
+
+[common/src/main/java/top/rizon/springbestpractice/common/utils/StreamUtil.java](common/src/main/java/top/rizon/springbestpractice/common/utils/StreamUtil.java)  
+demo: [common/src/test/java/top/rizon/springbestpractice/common/utils/StreamUtilTest.java](common/src/test/java/top/rizon/springbestpractice/common/utils/StreamUtilTest.java)  
 
 #### 第三方工具类相关
 
