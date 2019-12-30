@@ -3,6 +3,7 @@ package top.rizon.springbestpractice.common.utils;
 import com.google.common.collect.Maps;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import org.junit.Test;
 
 import java.util.*;
@@ -21,6 +22,19 @@ public class StreamUtilTest {
             new Person("wang", "B1", 15, "M"),
             new Person("li", "A1", 11, "W"),
             new Person("wu", "B2", 11, "W"));
+
+
+    @Test
+    public void base() {
+        System.out.println("map filter orElse DEMO: " +
+                persons.stream()
+                        .map(Person::getName)
+                        .filter("notExist"::equals)
+                        .findAny()
+                        .orElse("default")
+        );
+
+    }
 
     /**
      * 使用stream和google的maps工具类的list转map
@@ -104,10 +118,11 @@ public class StreamUtilTest {
 
     }
 
+    @RequiredArgsConstructor
     @AllArgsConstructor
     @Data
     public static class Person {
-        private String name;
+        private final String name;
         private String location;
         private Integer age;
         private String sex;
