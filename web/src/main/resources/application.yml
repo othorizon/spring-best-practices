@@ -10,6 +10,26 @@ project-build-version-info:
   scmVersion: @buildNumber@
 
 spring:
+  # 自动管理数据库版本
+  flyway:
+    enabled: true
+    # sql文件位置
+    locations: classpath:db/migration
+    # flyway 的 clean 命令会删除指定 schema 下的所有 table,禁用
+    cleanDisabled: true
+    # 如果指定 schema 包含了其他表,但没有 flyway_schema_history 表的话, 在执行 flyway migrate 命令之前, 必须先执行 flyway baseline 命令.
+    # 设置 spring.flyway.baseline-on-migrate 为 true 后, flyway 将在需要 baseline 的时候, 自动执行一次 baseline.
+    baselineOnMigrate: true
+    # 指定 baseline 的版本号,缺省值为 1, 等于或低于该版本号的 SQL 文件, migrate 的时候被忽略.
+    ##  该配置可用于已经上线了的没有使用flyway的数据库的第一次初始化flyway场景：
+    ##   线上数据库已经有表了，这时候可以新增一个baseline的sql文件其中包含当前线上数据库表的初始化sql，然后设置该参数与baseline sql的版本一致
+    ##   当第一次上线flyway时，因为线上库中有其他表但是没有flyway_schema_history表，
+    ##   因此flyway会创建该表并写入一条baseline的记录，而且因为baseline sql文件版本号小于等于该参数而不会被migrate执行。
+    ##   而如果在一个全新的环境中启动初始化时，不会执行baseline操作，因此baseline sql文件会被migrate执行完成初始化操作
+    baselineVersion: 2019.12.24.1
+    outOfOrder: false
+    # 需要 flyway 管控的 schema list, 缺省的话, 使用的时 datasource.url 直连上的那个 schema, 可以指定多个schema, 但仅会在第一个schema下建立 metadata 表, 也仅在第一个schema应用migration sql 脚本. 但flyway Clean 命令会依次在这些schema下都执行一遍.
+    schemas:
   # Demo DataSource Config
   datasource:
     driver-class-name: org.h2.Driver
