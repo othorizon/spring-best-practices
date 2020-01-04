@@ -8,8 +8,15 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>web</artifactId>
+    <artifactId>spring-best-practice-web</artifactId>
 
+    <properties>
+        <!--是否打包配置文件-->
+        <packageConf>false</packageConf>
+        <!--打包时配置文件取哪个环境的 打包必传参数-->
+        <confEnv>test</confEnv>
+        <buildType>tar</buildType>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -54,6 +61,49 @@
                         <item>timestamp</item>
                         <item>buildNumber</item>
                     </items>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>read-project-properties</goal>
+                            <goal>write-project-properties</goal>
+                        </goals>
+                        <configuration>
+                            <files>
+                                <file>${project.basedir}/src/main/resources/application.yml</file>
+                            </files>
+                            <outputFile>${build.directory}/project.properties</outputFile>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>exec-maven-plugin</artifactId>
+                <groupId>org.codehaus.mojo</groupId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <executable>${basedir}/deploy/package_jar.sh</executable>
+                    <arguments>
+                        <argument>${packageConf}</argument>
+                        <argument>${build.finalName}</argument>
+                        <!--port和logDir是读取的配置文件 -->
+                        <argument>${port}</argument>
+                        <argument>${logDir}</argument>
+                        <argument>${confEnv}</argument>
+                        <argument>${buildType}</argument>
+                    </arguments>
                 </configuration>
             </plugin>
         </plugins>

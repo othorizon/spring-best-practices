@@ -144,12 +144,30 @@ jackson的`@JsonCreator`可以指定json反序列化时的构造函数，`@JsonV
 
 [API Doc - Postman](https://documenter.getpostman.com/view/494976/SWLZgAn8)    
 
-编译
+### 构建部署
+
+#### 编译jar
 
 ```bash
 # buildnumber-maven-plugin配置所致，在clean之后运行测试用例会由于尚未替换的配置导致配置文件读取失败
 mvn clean package -DskipTests=true
 java -jar web/target/web-0.0.1-SNAPSHOT.jar
+```
+
+#### 将外部配置文件和jar一起打包成tar  
+
+```bash
+mvn clean package  -DbuildType=tar -DpackageConf=true -DconfEnv=test -DskipTests=true
+# 编译会生成tar： web/target/spring-best-practice-web-0.0.1-SNAPSHOT.tar.gz
+# tar包中包含了启动脚本 解压到目标位置后执行启动脚本
+sh bin/app.sh start|stop|restart|status|pid
+```
+
+#### 构建docker镜像
+
+```bash
+mvn clean package -DbuildType=docker -DpackageConf=true -DconfEnv=test -DskipTests=true
+docker run --rm -it -p8080:8080 rizon/spring-best-practice
 ```
 
 ### Online IDE

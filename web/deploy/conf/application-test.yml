@@ -1,0 +1,8 @@
+# test conf
+
+# 该配置文件打包时会被复制作为spring程序的外部配置文件加载，会覆盖jar包内部的同key配置，可查阅 spring配置文件加载顺序 相关文档
+# 本案例中会在打包时把目标目录的该配置文件改名为 'application.yml' 目的是为了不再去明确的指定 `spring.profiles.active`
+
+logging:
+  # 该示例配置文件会写出日志文件，配置中指定了日志目录，目录从系统变量读取，系统变量的值是在打包时从application.yml中读取写入app.sh中的
+  config: classpath:log4j2-example.xml

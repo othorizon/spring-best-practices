@@ -40,6 +40,8 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
 
+# 该参数会在打包时写入启动脚本中，作为系统变量，log4j会读取该值，参考: log4j2-example.xml
+logDir: /tmp/log/
 logging:
   config: classpath:log4j2.xml
 
