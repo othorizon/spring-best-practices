@@ -77,7 +77,7 @@
                             <files>
                                 <file>${project.basedir}/src/main/resources/application.yml</file>
                             </files>
-                            <outputFile>${build.directory}/project.properties</outputFile>
+                            <outputFile>${project.build.directory}/project.properties</outputFile>
                         </configuration>
                     </execution>
                 </executions>
@@ -97,7 +97,7 @@
                     <executable>${basedir}/deploy/package_jar.sh</executable>
                     <arguments>
                         <argument>${packageConf}</argument>
-                        <argument>${build.finalName}</argument>
+                        <argument>${project.build.finalName}</argument>
                         <!--port和logDir是读取的配置文件 -->
                         <argument>${port}</argument>
                         <argument>${logDir}</argument>
